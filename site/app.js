@@ -121,15 +121,34 @@ function populateSessions() {
   });
 }
 
-function populateLetterBills() {
+function selectedInterestIds() {
+  return new Set(
+    $$('#subscription-form input[name="topics"]:checked').map((input) => input.value)
+  );
+}
+
+function populateLetterBills(preferredBillId = "") {
   const select = $("#letter-bill");
-  select.replaceChildren(new Option("Choose a bill", ""));
-  state.bills.forEach((bill) => {
+  const selectedTopics = selectedInterestIds();
+  const matchingBills = selectedTopics.size
+    ? state.bills.filter((bill) =>
+        (bill.topics || []).some((topic) => selectedTopics.has(topic))
+      )
+    : [];
+  const prompt = selectedTopics.size
+    ? `Choose from ${matchingBills.length.toLocaleString()} matching bills`
+    : "Select your interests above to see bills";
+  select.replaceChildren(new Option(prompt, ""));
+  matchingBills.forEach((bill) => {
     const option = document.createElement("option");
     option.value = bill.id;
     option.textContent = `${bill.bill_number} — ${bill.title}`;
     select.append(option);
   });
+  select.disabled = matchingBills.length === 0;
+  if (preferredBillId && matchingBills.some((bill) => bill.id === preferredBillId)) {
+    select.value = preferredBillId;
+  }
 }
 
 async function switchSession() {
@@ -324,6 +343,13 @@ Bill data version: ${bill.bill_version || "not listed"}
 }
 
 function selectBillForLetter(id) {
+  const selectedBill = state.bills.find((bill) => bill.id === id);
+  if (!selectedBill) return;
+  if (![...$("#letter-bill").options].some((option) => option.value === id)) {
+    const option = new Option(`${selectedBill.bill_number} — ${selectedBill.title}`, id);
+    $("#letter-bill").append(option);
+  }
+  $("#letter-bill").disabled = false;
   $("#letter-bill").value = id;
   generateLetter();
   history.replaceState(null, "", `?action=${encodeURIComponent(id.split(":")[1])}#take-action`);
@@ -406,6 +432,13 @@ function bindEvents() {
     $(selector).addEventListener(selector === "#bill-search" ? "input" : "change", () => renderBills());
   });
   $("#session-filter").addEventListener("change", switchSession);
+  $$('#subscription-form input[name="topics"]').forEach((input) => {
+    input.addEventListener("change", () => {
+      const priorSelection = $("#letter-bill").value;
+      populateLetterBills(priorSelection);
+      if (!$("#letter-bill").value) $("#letter-preview").value = "";
+    });
+  });
   $("#load-more").addEventListener("click", () => {
     state.visible += 30;
     const list = $("#bill-list");
