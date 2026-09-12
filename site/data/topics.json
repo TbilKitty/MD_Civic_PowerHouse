@@ -1,0 +1,97 @@
+[
+  {
+    "id": "criminal_justice",
+    "label": "Criminal Justice and Policing",
+    "description": "Criminal law, policing, sentencing, pretrial policy, and public safety."
+  },
+  {
+    "id": "courts_corrections",
+    "label": "Courts and Corrections",
+    "description": "Courts, judicial procedure, incarceration, corrections, and reentry."
+  },
+  {
+    "id": "housing",
+    "label": "Housing and Landlord–Tenant Law",
+    "description": "Renting, homeownership, development, eviction, and housing assistance."
+  },
+  {
+    "id": "tax_economic_policy",
+    "label": "Taxes and Economic Policy",
+    "description": "State and local taxes, credits, incentives, budgets, and economic development."
+  },
+  {
+    "id": "education",
+    "label": "Education",
+    "description": "Public schools, higher education, students, teachers, and school funding."
+  },
+  {
+    "id": "health",
+    "label": "Health and Behavioral Health",
+    "description": "Health care, insurance, public health, mental health, and substance use."
+  },
+  {
+    "id": "labor",
+    "label": "Employment and Labor",
+    "description": "Wages, workplace rights, leave, unions, and unemployment."
+  },
+  {
+    "id": "public_employees",
+    "label": "State Employees and Public Benefits",
+    "description": "Public personnel, pensions, state employment, and government benefits."
+  },
+  {
+    "id": "civil_rights_elections",
+    "label": "Civil Rights and Elections",
+    "description": "Voting, elections, discrimination, constitutional rights, and public access."
+  },
+  {
+    "id": "family_child_welfare",
+    "label": "Family Law and Child Welfare",
+    "description": "Custody, support, domestic relations, adoption, and child protection."
+  },
+  {
+    "id": "immigration",
+    "label": "Immigration",
+    "description": "Immigration enforcement, legal status, services, and immigrant communities."
+  },
+  {
+    "id": "environment_energy",
+    "label": "Environment and Energy",
+    "description": "Climate, conservation, utilities, pollution, and energy production."
+  },
+  {
+    "id": "transportation",
+    "label": "Transportation",
+    "description": "Roads, transit, vehicles, rail, cycling, and transportation funding."
+  },
+  {
+    "id": "technology_privacy",
+    "label": "Technology, AI, and Privacy",
+    "description": "Artificial intelligence, cybersecurity, data, surveillance, and privacy."
+  },
+  {
+    "id": "consumer_protection",
+    "label": "Consumer Protection",
+    "description": "Consumer rights, debt, financial services, pricing, and unfair practices."
+  },
+  {
+    "id": "business_licensing",
+    "label": "Business and Professional Licensing",
+    "description": "Corporations, commerce, procurement, occupations, and professional licenses."
+  },
+  {
+    "id": "local_government",
+    "label": "Local Government",
+    "description": "Counties, municipalities, local authority, zoning, and public services."
+  },
+  {
+    "id": "disability_veterans",
+    "label": "Disability Rights and Veterans",
+    "description": "Disability access, accommodations, military families, and veterans."
+  },
+  {
+    "id": "other",
+    "label": "Other Legislation",
+    "description": "Bills not yet matched to a public-interest category."
+  }
+]
