@@ -1,0 +1,3 @@
+# The tracker uses only Python's standard library.
+# Optional AI summaries use the OpenAI Responses API over HTTPS.
+

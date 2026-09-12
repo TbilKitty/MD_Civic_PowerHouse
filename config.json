@@ -1,0 +1,119 @@
+{
+  "site_name": "Maryland Legislative Watch",
+  "session": "2026rs",
+  "session_label": "2026 Regular Session",
+  "automatic_session_rollover": true,
+  "ai_model": "gpt-5-mini",
+  "ai_max_per_run": 10,
+  "max_change_history": 5000,
+  "topics": [
+    {
+      "id": "criminal_justice",
+      "label": "Criminal Justice and Policing",
+      "description": "Criminal law, policing, sentencing, pretrial policy, and public safety.",
+      "terms": ["criminal", "crime", "police", "law enforcement", "sentenc", "pretrial", "public safety", "firearm", "correction", "parole", "probation"]
+    },
+    {
+      "id": "courts_corrections",
+      "label": "Courts and Corrections",
+      "description": "Courts, judicial procedure, incarceration, corrections, and reentry.",
+      "terms": ["court", "judicial", "judge", "correction", "inmate", "incarcer", "reentry", "prison", "detention"]
+    },
+    {
+      "id": "housing",
+      "label": "Housing and Landlord–Tenant Law",
+      "description": "Renting, homeownership, development, eviction, and housing assistance.",
+      "terms": ["housing", "landlord", "tenant", "lease", "rent", "eviction", "real property", "homeowner", "mortgage", "condominium"]
+    },
+    {
+      "id": "tax_economic_policy",
+      "label": "Taxes and Economic Policy",
+      "description": "State and local taxes, credits, incentives, budgets, and economic development.",
+      "terms": ["tax", "revenue", "economic", "budget", "appropriation", "credit", "assessment", "fiscal", "development finance"]
+    },
+    {
+      "id": "education",
+      "label": "Education",
+      "description": "Public schools, higher education, students, teachers, and school funding.",
+      "terms": ["education", "school", "student", "teacher", "college", "university", "academic", "child care"]
+    },
+    {
+      "id": "health",
+      "label": "Health and Behavioral Health",
+      "description": "Health care, insurance, public health, mental health, and substance use.",
+      "terms": ["health", "medical", "hospital", "insurance", "behavioral", "mental", "substance", "pharmacy", "patient"]
+    },
+    {
+      "id": "labor",
+      "label": "Employment and Labor",
+      "description": "Wages, workplace rights, leave, unions, and unemployment.",
+      "terms": ["labor", "employment", "employee", "employer", "wage", "workplace", "union", "collective bargaining", "unemployment", "leave"]
+    },
+    {
+      "id": "public_employees",
+      "label": "State Employees and Public Benefits",
+      "description": "Public personnel, pensions, state employment, and government benefits.",
+      "terms": ["state employee", "public employee", "personnel", "pension", "retirement", "state government", "public benefit"]
+    },
+    {
+      "id": "civil_rights_elections",
+      "label": "Civil Rights and Elections",
+      "description": "Voting, elections, discrimination, constitutional rights, and public access.",
+      "terms": ["civil right", "election", "voting", "ballot", "discrimination", "equal", "constitutional", "human rights", "open government"]
+    },
+    {
+      "id": "family_child_welfare",
+      "label": "Family Law and Child Welfare",
+      "description": "Custody, support, domestic relations, adoption, and child protection.",
+      "terms": ["family law", "child welfare", "child support", "custody", "domestic", "adoption", "juvenile", "foster"]
+    },
+    {
+      "id": "immigration",
+      "label": "Immigration",
+      "description": "Immigration enforcement, legal status, services, and immigrant communities.",
+      "terms": ["immigration", "immigrant", "citizenship", "noncitizen", "alien", "visa", "ice", "287(g)"]
+    },
+    {
+      "id": "environment_energy",
+      "label": "Environment and Energy",
+      "description": "Climate, conservation, utilities, pollution, and energy production.",
+      "terms": ["environment", "energy", "climate", "utility", "electric", "natural resources", "pollution", "conservation", "renewable", "gas"]
+    },
+    {
+      "id": "transportation",
+      "label": "Transportation",
+      "description": "Roads, transit, vehicles, rail, cycling, and transportation funding.",
+      "terms": ["transportation", "vehicle", "highway", "road", "transit", "rail", "bicycle", "motor", "traffic"]
+    },
+    {
+      "id": "technology_privacy",
+      "label": "Technology, AI, and Privacy",
+      "description": "Artificial intelligence, cybersecurity, data, surveillance, and privacy.",
+      "terms": ["technology", "artificial intelligence", "cyber", "data", "privacy", "internet", "digital", "surveillance", "algorithm"]
+    },
+    {
+      "id": "consumer_protection",
+      "label": "Consumer Protection",
+      "description": "Consumer rights, debt, financial services, pricing, and unfair practices.",
+      "terms": ["consumer", "debt", "credit", "financial protection", "unfair", "deceptive", "price", "retail"]
+    },
+    {
+      "id": "business_licensing",
+      "label": "Business and Professional Licensing",
+      "description": "Corporations, commerce, procurement, occupations, and professional licenses.",
+      "terms": ["business", "corporation", "commercial", "procurement", "license", "occupation", "professional", "limited liability"]
+    },
+    {
+      "id": "local_government",
+      "label": "Local Government",
+      "description": "Counties, municipalities, local authority, zoning, and public services.",
+      "terms": ["local government", "county", "municipal", "zoning", "Baltimore City", "local law", "planning"]
+    },
+    {
+      "id": "disability_veterans",
+      "label": "Disability Rights and Veterans",
+      "description": "Disability access, accommodations, military families, and veterans.",
+      "terms": ["disability", "disabled", "accessibility", "accommodation", "veteran", "military", "armed forces"]
+    }
+  ]
+}
