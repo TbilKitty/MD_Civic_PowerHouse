@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Plain-language Maryland legislative updates, interest alerts, and civic-action tools.">
+  <title>Maryland Legislative Watch</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="Maryland Legislative Watch home">
+        <span class="brand-mark" aria-hidden="true">MD</span>
+        <span>Maryland Legislative Watch</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#subscribe">Get updates</a>
+        <a href="#take-action">Take action</a>
+        <a href="#bills">Explore bills</a>
+        <a href="#changes">Recent changes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero flag-panel" id="top">
+      <div class="eyebrow">Maryland law, made legible</div>
+      <h1>Know what Annapolis is considering—and what you can do about it.</h1>
+      <p class="hero-copy">Maryland Legislative Watch translates legislative proposals into accessible language, tracks meaningful changes, and helps residents participate before decisions are final.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#subscribe">Choose your interests</a>
+        <a class="button secondary" href="#bills">Explore current bills</a>
+      </div>
+      <div class="session-strip" aria-live="polite">
+        <span id="session-label">Current Maryland session</span>
+        <span><strong id="bill-count">—</strong> bills and resolutions</span>
+        <span>Updated <time id="updated-at">—</time></span>
+      </div>
+    </section>
+
+    <section class="panel purpose" aria-labelledby="purpose-title">
+      <div>
+        <div class="eyebrow">Why this exists</div>
+        <h2 id="purpose-title">Citizens should not need a lobbyist—or a law degree—to follow state policy.</h2>
+      </div>
+      <div>
+        <p>Official legislative sources are authoritative, but the volume and terminology can make it difficult to recognize which proposals affect your family, work, neighborhood, or rights.</p>
+        <p>This independent project organizes official Maryland data by everyday interests, preserves a visible record of changes, and connects information with practical civic participation.</p>
+        <p class="source-note">Summaries are informational and may use AI. Always consult the linked official bill text, amendments, fiscal notes, and committee materials.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="subscribe" aria-labelledby="subscribe-title">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Personalized legislative alerts</div>
+          <h2 id="subscribe-title">What matters to you?</h2>
+          <p>Choose any subjects you want to follow. You can unsubscribe at any time.</p>
+        </div>
+        <span class="step-badge">1</span>
+      </div>
+
+      <form id="subscription-form" novalidate>
+        <fieldset>
+          <legend class="sr-only">Legislative interests</legend>
+          <div id="interest-grid" class="interest-grid" aria-live="polite"></div>
+        </fieldset>
+
+        <details class="preferences">
+          <summary>Choose which developments trigger an update</summary>
+          <fieldset class="choice-row">
+            <legend class="sr-only">Alert types</legend>
+            <label><input type="checkbox" name="events" value="new_bill" checked> New bills</label>
+            <label><input type="checkbox" name="events" value="hearing" checked> Hearings</label>
+            <label><input type="checkbox" name="events" value="change" checked> Amendments and status changes</label>
+          </fieldset>
+        </details>
+
+        <div class="signup-row">
+          <label>
+            Email address
+            <input type="email" name="email" autocomplete="email" required placeholder="you@example.com">
+          </label>
+          <label>
+            Update frequency
+            <select name="frequency">
+              <option value="daily">Daily digest</option>
+              <option value="weekly">Weekly digest</option>
+              <option value="immediate">Immediate updates</option>
+            </select>
+          </label>
+          <label class="honeypot" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          <button class="button primary" type="submit">Subscribe to updates</button>
+        </div>
+        <label class="consent"><input type="checkbox" name="consent" required> I agree to receive the selected legislative updates and understand that I must confirm my email address.</label>
+        <p id="subscription-status" class="form-status" role="status"></p>
+      </form>
+    </section>
+
+    <section class="panel action-panel" id="take-action" aria-labelledby="action-title">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">From information to participation</div>
+          <h2 id="action-title">Write about a Maryland bill</h2>
+          <p>Select a bill or use a bill card below. The draft remains in your browser and is never sent or stored by this website.</p>
+        </div>
+        <span class="step-badge">2</span>
+      </div>
+
+      <div class="action-layout">
+        <form id="letter-form" class="letter-controls">
+          <label>
+            Bill
+            <select id="letter-bill" required><option value="">Choose a bill</option></select>
+            <small>The list is limited to the interests you selected above.</small>
+          </label>
+          <div class="two-column">
+            <label>
+              Position
+              <select id="letter-position">
+                <option value="FAVORABLE">Support — Favorable</option>
+                <option value="UNFAVORABLE">Oppose — Unfavorable</option>
+                <option value="FAVORABLE WITH AMENDMENTS">Favorable with amendments</option>
+                <option value="INFORMATION ONLY">Information only</option>
+              </select>
+            </label>
+            <label>
+              Audience
+              <select id="letter-audience">
+                <option value="committee">Assigned committee</option>
+                <option value="legislators">My senator and delegates</option>
+                <option value="governor">Governor</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Your name
+            <input id="letter-name" type="text" autocomplete="name" placeholder="Your name">
+          </label>
+          <label>
+            Personal reason or requested amendment
+            <textarea id="letter-reason" rows="5" placeholder="Explain how this proposal affects you, your family, your work, or your community."></textarea>
+          </label>
+          <div class="button-row">
+            <button class="button primary" type="button" id="generate-letter">Generate draft</button>
+            <a class="button text-button" id="find-reps" target="_blank" rel="noopener">Find my legislators</a>
+          </div>
+        </form>
+
+        <div class="letter-preview-wrap">
+          <div class="preview-label">Editable draft</div>
+          <textarea id="letter-preview" class="letter-preview" rows="20" aria-label="Generated letter draft" placeholder="Your letter will appear here."></textarea>
+          <div class="button-row">
+            <button class="button secondary" type="button" id="copy-letter">Copy letter</button>
+            <button class="button secondary" type="button" id="print-letter">Print or save PDF</button>
+            <a class="button text-button" id="mymga-link" target="_blank" rel="noopener">Open MyMGA</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="bills" aria-labelledby="bills-title">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Current legislation</div>
+          <h2 id="bills-title">Explore Maryland bills</h2>
+        </div>
+        <span class="step-badge">3</span>
+      </div>
+      <div class="filters">
+        <label class="search-field">Search bills<input id="bill-search" type="search" placeholder="Bill number, title, sponsor, or keyword"></label>
+        <label>Session<select id="session-filter"><option value="">Current session</option></select></label>
+        <label>Interest<select id="topic-filter"><option value="">All interests</option></select></label>
+        <label>Chamber<select id="chamber-filter"><option value="">Both chambers</option><option value="HB">House</option><option value="SB">Senate</option></select></label>
+        <label>Status<select id="status-filter"><option value="">Any status</option><option value="hearing">Hearing scheduled</option><option value="passed">Passed by MGA</option><option value="governor">Governor action</option></select></label>
+      </div>
+      <p id="results-count" class="results-count" aria-live="polite"></p>
+      <div id="bill-list" class="bill-list" aria-live="polite"></div>
+      <button class="button secondary load-more" id="load-more" type="button" hidden>Show more bills</button>
+    </section>
+
+    <section class="panel" id="changes" aria-labelledby="changes-title">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Visible version history</div>
+          <h2 id="changes-title">Recent detected changes</h2>
+          <p>Changes reflect differences between scheduled downloads of Maryland’s official legislative dataset.</p>
+        </div>
+      </div>
+      <div id="change-list" class="change-list"></div>
+    </section>
+
+    <section class="panel compact-panel" aria-labelledby="method-title">
+      <h2 id="method-title">About the data</h2>
+      <p>The tracker uses the Maryland General Assembly’s official open legislative dataset. Friendly topic labels are generated from official subject classifications and transparent keyword rules. AI summaries, when enabled, are labeled and tied to a source version.</p>
+      <p>This site is independent, nonpartisan, and not affiliated with the Maryland General Assembly. It provides public information, not legal advice.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Maryland Legislative Watch · Built for informed public participation.</p>
+    <p><a href="privacy.html">Privacy and email policy</a> · <a href="https://mgaleg.maryland.gov/" target="_blank" rel="noopener">Official Maryland General Assembly website</a></p>
+  </footer>
+
+  <template id="bill-card-template">
+    <article class="bill-card">
+      <div class="bill-card-head">
+        <div><span class="bill-number"></span><span class="version-pill"></span></div>
+        <div class="topic-tags"></div>
+      </div>
+      <h3 class="bill-title"></h3>
+      <p class="bill-status"></p>
+      <p class="bill-summary"></p>
+      <details>
+        <summary>Bill details and official subjects</summary>
+        <dl class="bill-details"></dl>
+      </details>
+      <div class="bill-actions">
+        <a class="official-link" target="_blank" rel="noopener">Official bill page</a>
+        <button class="button mini write-button" type="button">Write about this bill</button>
+      </div>
+    </article>
+  </template>
+</body>
+</html>
