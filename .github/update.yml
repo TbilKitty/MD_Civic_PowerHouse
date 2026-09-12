@@ -1,0 +1,56 @@
+name: Update Maryland legislation
+
+on:
+  schedule:
+    - cron: "17 */4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: legislative-data-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+      AI_MAX_PER_RUN: ${{ vars.AI_MAX_PER_RUN }}
+      AI_TOPIC_ALLOWLIST: ${{ vars.AI_TOPIC_ALLOWLIST }}
+      SUBSCRIPTION_API_URL: ${{ vars.SUBSCRIPTION_API_URL }}
+      DISPATCH_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download and compare legislation
+        run: python update_data.py
+      - name: Send new events to subscription service
+        run: python notify_subscribers.py
+      - name: Commit updated public data
+        run: |
+          git config user.name "Maryland Legislative Watch"
+          git config user.email "actions@users.noreply.github.com"
+          git add site/data
+          git diff --cached --quiet || git commit -m "Update Maryland legislative data"
+          git push
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - name: Publish refreshed website
+        id: deployment
+        uses: actions/deploy-pages@v4
