@@ -1,9 +1,0 @@
-[
-  {
-    "session": "2026RS",
-    "session_label": "2026 Regular Session",
-    "current": true,
-    "bills_path": "data/bills.json",
-    "changes_path": "data/changes.json"
-  }
-]
