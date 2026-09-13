@@ -123,9 +123,21 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(36, 91, 74, 
 .action-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 2rem; }
 .letter-controls { display: grid; gap: 1rem; align-content: start; }
 .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+.sender-details { display: grid; gap: .8rem; padding: 1rem; border: 1px solid var(--line); border-radius: 10px; background: #fffdf7; }
+.sender-details legend { padding: 0 .35rem; font-family: Georgia, serif; font-size: 1.15rem; font-weight: 800; }
+.field-note { margin: 0; color: var(--muted); font-size: .85rem; font-weight: normal; }
+.address-row { display: grid; grid-template-columns: 1.3fr .8fr .8fr; gap: .75rem; }
+.optional { color: var(--muted); font-size: .8rem; font-weight: normal; }
 .letter-preview-wrap { padding: 1rem; background: #f3ede1; border: 1px solid var(--line); border-radius: 10px; }
 .preview-label { font-size: .8rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .5rem; }
 .letter-preview { min-height: 470px; background: white; font-family: Georgia, serif; line-height: 1.6; }
+.letter-next-steps { margin-top: 2rem; padding: 1.5rem; background: #fff8dc; border: 2px solid var(--black); border-left: 10px solid var(--gold-dark); border-radius: 10px; }
+.letter-next-steps h3 { margin-top: .25rem; font-size: clamp(1.45rem, 3vw, 2rem); }
+.important-note { padding: .8rem 1rem; background: white; border-left: 5px solid var(--red); }
+.instruction-list { display: grid; gap: 1rem; padding-left: 1.4rem; }
+.instruction-list li { padding-left: .35rem; line-height: 1.55; }
+.instruction-list strong { display: block; margin-bottom: .15rem; }
+.instruction-actions { margin-top: 1.25rem; }
 
 .filters { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: .75rem; padding: 1rem; background: #f4ede2; border-radius: 10px; }
 .results-count { color: var(--muted); font-weight: bold; }
@@ -169,7 +181,7 @@ footer a { color: var(--gold); }
 @media (max-width: 600px) {
   .header-inner { align-items: flex-start; }
   nav { display: none; }
-  .interest-grid, .signup-row, .filters, .two-column { grid-template-columns: 1fr; }
+  .interest-grid, .signup-row, .filters, .two-column, .address-row { grid-template-columns: 1fr; }
   .interest-card { min-height: 0; }
   .panel, .flag-panel { border-radius: 10px; }
   .bill-card-head, .bill-actions { align-items: flex-start; flex-direction: column; }
