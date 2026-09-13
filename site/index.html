@@ -137,10 +137,42 @@
               </select>
             </label>
           </div>
-          <label>
-            Your name
-            <input id="letter-name" type="text" autocomplete="name" placeholder="Your name">
-          </label>
+          <fieldset class="sender-details">
+            <legend>Your contact information</legend>
+            <p class="field-note">Your browser can offer saved address details. This information stays in your browser and is used only to prepare the draft.</p>
+            <label>
+              Full name
+              <input id="letter-name" name="name" type="text" autocomplete="name" placeholder="Your full name">
+            </label>
+            <label>
+              Street address
+              <input id="letter-street" name="street-address" type="text" autocomplete="street-address" placeholder="Street address">
+            </label>
+            <div class="address-row">
+              <label>
+                City
+                <input id="letter-city" name="address-level2" type="text" autocomplete="address-level2" placeholder="City">
+              </label>
+              <label>
+                State
+                <input id="letter-state" name="address-level1" type="text" autocomplete="address-level1" value="Maryland">
+              </label>
+              <label>
+                ZIP code
+                <input id="letter-zip" name="postal-code" type="text" autocomplete="postal-code" inputmode="numeric" placeholder="ZIP code">
+              </label>
+            </div>
+            <div class="two-column">
+              <label>
+                Email <span class="optional">(optional)</span>
+                <input id="letter-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+              </label>
+              <label>
+                Telephone <span class="optional">(optional)</span>
+                <input id="letter-phone" name="tel" type="tel" autocomplete="tel" placeholder="Telephone number">
+              </label>
+            </div>
+          </fieldset>
           <label>
             Personal reason or requested amendment
             <textarea id="letter-reason" rows="5" placeholder="Explain how this proposal affects you, your family, your work, or your community."></textarea>
@@ -161,6 +193,36 @@
           </div>
         </div>
       </div>
+
+      <section class="letter-next-steps" aria-labelledby="letter-next-title">
+        <div>
+          <div class="eyebrow">After generating the draft</div>
+          <h3 id="letter-next-title">What do I do with this letter?</h3>
+          <p class="important-note"><strong>The website prepares a draft; it does not send the letter or submit testimony for you.</strong></p>
+        </div>
+        <ol class="instruction-list">
+          <li>
+            <strong>Personalize and verify it.</strong>
+            Read the official bill page, replace any bracketed prompts, and explain briefly how the proposal affects you or your community. Your home address helps an elected official confirm that you are a constituent; avoid including unnecessary sensitive information.
+          </li>
+          <li>
+            <strong>Choose the right recipient.</strong>
+            While a bill is in committee, contact the assigned committee and your own Maryland senator and delegates. If the General Assembly has passed the bill and it is awaiting executive action, direct the request to the Governor.
+          </li>
+          <li>
+            <strong>Choose how to deliver it.</strong>
+            For formal written testimony, follow the committee's witness-signup instructions through MyMGA and observe that committee's filing window and document rules. For ordinary advocacy, paste the letter into the legislator's official email or contact form. Printing and mailing is also available, but may be too slow near a hearing or vote.
+          </li>
+          <li>
+            <strong>Keep a record and follow the bill.</strong>
+            Save the final letter and any submission confirmation. Continue checking the official bill page because hearing dates, amendments, committee assignments, and bill status can change.
+          </li>
+        </ol>
+        <div class="button-row instruction-actions">
+          <a class="button secondary" href="https://mgaleg.maryland.gov/mgawebsite/Members/District" target="_blank" rel="noopener">Find my Maryland legislators</a>
+          <a class="button secondary" href="https://mgaleg.maryland.gov/mgawebsite/MyMGATracking/WitnessSignup" target="_blank" rel="noopener">Open MyMGA testimony signup</a>
+        </div>
+      </section>
     </section>
 
     <section class="panel" id="bills" aria-labelledby="bills-title">
