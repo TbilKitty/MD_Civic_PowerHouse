@@ -308,6 +308,12 @@ function generateLetter() {
   const position = $("#letter-position").value;
   const audience = $("#letter-audience").value;
   const name = $("#letter-name").value.trim() || "[Your name]";
+  const street = $("#letter-street").value.trim();
+  const city = $("#letter-city").value.trim();
+  const stateName = $("#letter-state").value.trim();
+  const postalCode = $("#letter-zip").value.trim();
+  const email = $("#letter-email").value.trim();
+  const phone = $("#letter-phone").value.trim();
   const reason = $("#letter-reason").value.trim();
   const [stance, request] = positionLanguage(position);
   const recipient = recipientFor(bill, audience);
@@ -316,6 +322,11 @@ function generateLetter() {
   const personal = reason
     ? `\n\nMy reason for writing is: ${reason}`
     : "\n\n[Add a personal explanation of how this proposal affects you, your family, your work, or your community.]";
+  const locality = [city, [stateName, postalCode].filter(Boolean).join(" ")].filter(Boolean).join(", ");
+  const suppliedContact = [street, locality, email, phone].filter(Boolean);
+  const signatureDetails = suppliedContact.length
+    ? suppliedContact.join("\n")
+    : "[Street address]\n[City, Maryland ZIP]\n[Email or telephone, if desired]";
 
   $("#letter-preview").value = `${new Date().toLocaleDateString("en-US", { dateStyle: "long" })}
 
@@ -333,9 +344,7 @@ I respectfully ask that you ${request}. Thank you for considering my position an
 Sincerely,
 
 ${name}
-[Street address]
-[City, Maryland ZIP]
-[Email or telephone, if desired]
+${signatureDetails}
 
 Source checked: ${bill.details_url}
 Bill data version: ${bill.bill_version || "not listed"}
@@ -449,6 +458,14 @@ function bindEvents() {
   $("#letter-bill").addEventListener("change", generateLetter);
   $("#letter-position").addEventListener("change", generateLetter);
   $("#letter-audience").addEventListener("change", generateLetter);
+  ["#letter-name", "#letter-street", "#letter-city", "#letter-state", "#letter-zip", "#letter-email", "#letter-phone", "#letter-reason"].forEach((selector) => {
+    $(selector).addEventListener("input", () => {
+      if ($("#letter-bill").value) generateLetter();
+    });
+  });
+  $("#subscription-form input[type='email']").addEventListener("change", (event) => {
+    if (!$("#letter-email").value) $("#letter-email").value = event.currentTarget.value;
+  });
   $("#copy-letter").addEventListener("click", copyLetter);
   $("#print-letter").addEventListener("click", () => window.print());
   $("#subscription-form").addEventListener("submit", submitSubscription);
